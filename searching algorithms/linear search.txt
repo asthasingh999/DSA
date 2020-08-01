@@ -1,0 +1,39 @@
+Code:
+#include<stdio.h>
+int linear_search(int a[],int element,int n){
+for(int i=0;i<n;i++)
+{if(a[i]==element)
+return i;
+}
+return -1;}
+int main()
+{int n,element,value;
+printf("enter the size of array:");
+scanf("%d",&n);
+int a[n];
+for(int i=0;i<n;i++)
+scanf("%d",&a[i]);
+printf("enter the element:");
+scanf("%d",&element);
+value=linear_search(a,element,n);
+if(value== -1)
+    printf("element not found");
+else
+    printf("element is at index: %d",value);
+return 0;}
+Input: enter the size of array:10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+11
+Enter the element:5
+Output:
+element is at index: 4
+Time Complexity : O(n)
+Space complexity : O(1)
