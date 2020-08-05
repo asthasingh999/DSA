@@ -1,0 +1,59 @@
+6. {1,2,3,4,5,6,7,8,9,10,13,15,18,19,23,25,27,31,35,42,47,49}
+Write a programm where user may choose which type of searching required 
+ie
+ Press 1 for linear search
+Press 2 for Binary
+Press 3 for Jump
+
+#include<stdio.h>
+#include<math.h>
+int linear_search(int a[],int element,int n){
+for(int i=0;i<n;i++)
+{if(a[i]==element)
+return i;
+}
+return -1;}
+int binary_search(int a[],int element,int n){
+int low=0,high=n-1,mid;
+while(low<=high)
+{mid=(low+high)/2;
+if(element==a[mid])
+return mid;
+if(element>a[mid])
+low=mid+1;
+else
+high=mid-1;
+}
+return -1;}
+int jump_search(int arr[],int key,int size){
+int end=sqrt(size);
+int start=0;
+while(arr[end]<=key && end<size)
+{start=end;
+	end+=sqrt(size);
+	if(end>size-1)
+    	return -1;}
+for(int i=start;i<end;i++)
+{if(arr[i]==key)
+	return i;
+	}return -1;
+}
+int main(){
+int element,n,b;
+     	int a[]={1,2,3,4,5,6,7,8,9,10,13,15,18,19,23,25,27,31,35,42,47,49};
+     	n=sizeof(a)/sizeof(a[0]);
+     	printf("enter the element:");
+scanf("%d",&element);
+printf("Press 1 for linear search\nPress 2 for Binary search\nPress 3 for Jump search");
+scanf("%d",&b);
+if(b==1)
+{int x=linear_search(a,element,n);
+printf("index by linear search is %d",x);}
+else if(b==2)
+{int y=binary_search(a,element,n);
+printf("index by binary search is %d",y);}
+else
+{int z=jump_search(a,element,n);
+printf("index by jump search is %d",z);}
+return 0;}
+Time complexity:O(n) or O(logn) or O(√n)
