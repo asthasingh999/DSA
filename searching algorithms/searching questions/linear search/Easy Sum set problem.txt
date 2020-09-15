@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main(){
+	int n,m,k[101]={0};
+	scanf("%d", &n);
+	int a[n];              			
+	for(int i=0;i<n;i++)
+	scanf("%d",&a[i]); 
+	scanf("%d", &m);
+	int c[m];              			
+	for(int i=0;i<m;i++)
+	scanf("%d",&c[i]);
+	for(int i=0;i<m;i++){
+		for(int j=0;j<n;j++){
+          int d=c[i]-a[j];
+		  if(d>0)
+		  k[d]+=1;
+		}
+	}
+	for(int i=0;i<101;i++){
+		if(k[i]==n)
+		printf("%d ", i);
+	}
+}
