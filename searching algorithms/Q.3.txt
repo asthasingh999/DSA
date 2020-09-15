@@ -1,0 +1,50 @@
+3.Write a programm to to create array by user and also use Exponential and Interpolation search .
+
+#include<stdio.h>
+int interpolation_search(int n,int element,int a[]){
+int low=0,high=n-1,mid;
+while(low<=high)
+{mid=low+(((element-a[low])*(high-low))/(a[high]-a[low]));
+if(element==a[mid])
+return mid;
+if(element>a[mid])
+low=mid+1;
+else
+high=mid-1;
+}
+return -1;}
+int exponential_search(int n,int element,int a[]){
+if(a[0]==element)
+return 0;
+int i=1;
+while(i<n && a[i]<=element)
+i=i*2;
+return binary_search(a,i/2,i,element);}
+int binary_search(int a[],int low,int high,int element){
+while(low<=high)
+{int mid=low+(high-1)/2;
+if(element==a[mid])
+return mid;
+if(element>a[mid])
+return binary_search(a,mid+1,high,element);
+else
+return binary_search(a,low,mid-1,element);
+}
+return -1;}
+int main()
+{int n,element,i,value_i,value_e;
+printf("enter the size of array:");
+scanf("%d",&n);
+int a[n];
+for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+printf("enter the element:");
+scanf("%d",&element);
+value_i=interpolation_search(n,element,a);
+value_e=exponential_search(n,element,a);
+if((value_i== -1) && (value_e==-1))
+	printf("element not found");
+else
+	printf("element is at index: %d",value_i);
+return 0;}
+Time complexity:O(logn) or O(loglogn)

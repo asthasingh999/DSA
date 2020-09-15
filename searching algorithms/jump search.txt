@@ -1,0 +1,46 @@
+Code:
+#include<stdio.h>
+#include<math.h>
+int jump_search(int arr[],int size,int key){
+int end=sqrt(size);
+int start=0;
+while(arr[end]<=key && end<size)
+{start=end;
+    end+=sqrt(size);
+    if(end>size-1)
+        return -1;}
+for(int i=start;i<end;i++)
+{if(arr[i]==key)
+    return i;
+    }return -1;
+}
+
+int main(){
+int n,i,element,value;
+printf("enter the size of array:");
+scanf("%d",&n);
+int a[n];
+for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+printf("enter the element:");
+scanf("%d",&element);
+value=jump_search(a,n,element);
+ if(value>=0)
+    printf("element is at index %d",value);
+ else
+    printf("element is not found");}
+Input:enter the size of array:10
+1
+2
+2
+34
+56
+77
+96
+110
+140
+209
+enter the element:56
+Output:element is at index 4
+Time complexity: O(√n)
+Space complexity:O(1)
